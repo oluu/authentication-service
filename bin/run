@@ -1,0 +1,5 @@
+#!/bin/bash
+scriptpath="$(cd $(dirname $([ -L ${BASH_SOURCE[0]} ] && readlink ${BASH_SOURCE[0]} || echo ${BASH_SOURCE[0]})) && pwd -P)"
+cd $scriptpath/..
+go build -v -o app.o
+./app.o "$@"
