@@ -5,5 +5,8 @@ go build -v -o app.o
 
 export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+export AWS_SESSION_REGION=us-east-1
+export AWS_COGNITO_CLIENT_ID=6ci3qn66kp1pnjonkdmk19smet
+export AWS_COGNITO_CLIENT_SECRET=1bqm3d6u7akafnaveid24atgcpfkbb7d34ec7a31n7ob7o28s6qf
 
 ./app.o "$@"
