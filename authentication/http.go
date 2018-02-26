@@ -9,7 +9,7 @@ import (
 
 // RegisterHTTPHandlers initializes routes
 func RegisterHTTPHandlers(identityProvider *cognitoidentityprovider.CognitoIdentityProvider) {
-	http.HandleFunc("/authentication/signup", routeHandler(identityProvider))
+	http.HandleFunc("/authentication-service/signup", routeHandler(identityProvider))
 }
 
 func routeHandler(identityProvider *cognitoidentityprovider.CognitoIdentityProvider) http.HandlerFunc {
