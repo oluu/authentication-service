@@ -12,6 +12,6 @@ func main() {
 	// register authentication http handlers
 	authentication.RegisterHTTPHandlers(identity.NewIdentityProvider())
 	// cool logging to let us know the service is listening
-	log.Println("/authentication/signup", "[POST]")
+	log.Println("/authentication-service/signup", "[POST]")
 	http.ListenAndServe(":3000", nil)
 }
