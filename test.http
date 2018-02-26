@@ -8,3 +8,14 @@ Content-Type: application/json
     "username": "willtodd03@gmail.com",
     "password": "Test_123"
 }
+
+### POST SIGNUP AUTHENTICATION /authentication/signup ###
+POST http://localhost/authentication-service/authentication/signup
+X-Request-ID: 123
+X-Client-ID: 123
+Content-Type: application/json
+
+{
+    "username": "willtodd03@gmail.com",
+    "password": "Test_123"
+}
