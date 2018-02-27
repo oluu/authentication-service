@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/shinypotato/authentication-service/authentication"
-	"github.com/shinypotato/authentication-service/identity"
+	"github.com/oluu/authentication-service/authentication"
+	"github.com/oluu/authentication-service/identity"
 )
 
 func main() {

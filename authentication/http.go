@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/aws/aws-sdk-go/service/cognitoidentityprovider"
-	"github.com/shinypotato/authentication-service/util"
+	"github.com/oluu/authentication-service/util"
 )
 
 // RegisterHTTPHandlers initializes routes

@@ -1,6 +1,6 @@
 package authentication
 
-import "github.com/shinypotato/authentication-service/util"
+import "github.com/oluu/authentication-service/util"
 
 const (
 	authParamUsername = "USERNAME"
