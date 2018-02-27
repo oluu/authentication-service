@@ -3,9 +3,9 @@ package authentication
 import "github.com/oluu/authentication-service/util"
 
 const (
-	authParamUsername = "USERNAME"
-	authParamPassword = "PASSWORD"
-	authSecretHash    = "SECRET_HASH"
+	authParamUsername   = "USERNAME"
+	authParamPassword   = "PASSWORD"
+	authParamSecretHash = "SECRET_HASH"
 )
 
 var (
@@ -16,12 +16,8 @@ var (
 	envClientSecret = util.GetRequiredStringEnv("AWS_COGNITO_CLIENT_SECRET")
 )
 
-// SignupRequest is the object that is consumed from POST /authentication/signup
-type SignupRequest struct {
+// Request is the object that is consumed from POST /authentication/signup
+type Request struct {
 	Username *string `json:"username"`
 	Password *string `json:"password"`
-}
-
-// SignupResponse is the response from POST /authenticate/signup
-type SignupResponse struct {
 }

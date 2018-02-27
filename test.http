@@ -9,8 +9,8 @@ Content-Type: application/json
     "password": "Test_123"
 }
 
-### POST SIGNUP AUTHENTICATION IN DOCKER CONTAINER /authentication/signup ###
-POST http://localhost/authentication/signup
+### PUT LOGIN AUTHENTICATION /authentication/login ###
+PUT http://localhost:3000/authentication/login
 X-Request-ID: 123
 X-Client-ID: 123
 Content-Type: application/json

@@ -9,28 +9,49 @@ import (
 
 // RegisterHTTPHandlers initializes routes
 func RegisterHTTPHandlers(identityProvider *cognitoidentityprovider.CognitoIdentityProvider) {
-	http.HandleFunc("/authentication/signup", routeHandler(identityProvider))
+	http.HandleFunc("/authentication/signup", routeHandler(identityProvider, "signup"))
+	http.HandleFunc("/authentication/login", routeHandler(identityProvider, "login"))
 }
 
-func routeHandler(identityProvider *cognitoidentityprovider.CognitoIdentityProvider) http.HandlerFunc {
+func routeHandler(identityProvider *cognitoidentityprovider.CognitoIdentityProvider, routeStr string) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == http.MethodPost {
+		switch {
+		case routeStr == "signup" && r.Method == http.MethodPost:
 			postSignup(w, r, identityProvider)
+		case routeStr == "login" && r.Method == http.MethodPut:
+			putLogin(w, r, identityProvider)
+		default:
+
 		}
 	})
 }
 
 func postSignup(w http.ResponseWriter, r *http.Request, identityProvider *cognitoidentityprovider.CognitoIdentityProvider) {
-	signupRequest := new(SignupRequest)
+	signupRequest := new(Request)
 	err := util.ReadJSON(r, signupRequest)
 	if err != nil {
 		util.WriteResponse(w, err.Error(), http.StatusUnprocessableEntity)
 		return
 	}
-	response, err := Signup(signupRequest, identityProvider)
+	err = Signup(signupRequest, identityProvider)
 	if err != nil {
 		util.WriteResponse(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	util.WriteResponse(w, response, http.StatusCreated)
+	w.WriteHeader(http.StatusCreated)
+}
+
+func putLogin(w http.ResponseWriter, r *http.Request, identityProvider *cognitoidentityprovider.CognitoIdentityProvider) {
+	loginRequest := new(Request)
+	err := util.ReadJSON(r, loginRequest)
+	if err != nil {
+		util.WriteResponse(w, err.Error(), http.StatusUnprocessableEntity)
+		return
+	}
+	response, err := Login(loginRequest, identityProvider)
+	if err != nil {
+		util.WriteResponse(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	util.WriteResponse(w, response, http.StatusOK)
 }
